@@ -38,10 +38,12 @@ async def start(client, message):
     if not await db.is_user_exist(user.id):
         await db.add_user(user.id)             
     txt=f"👋 Hi {user.mention} \n 🪭 I am a simple File Renamer and File to Video Converter Bot \n 💫 With Custom Caption And Thumnail Support ",
-    buttons = [[ InlineKeyboardButton("❄️ Owner ❄️", callback_data="t.me/python_itachi"), 
-                 InlineKeyboardButton("❄️ About ❄️", callback_data="about")]
+    btb = [[ InlineKeyboardButton("❄️ Owner ❄️", callback_data="t.me/python_itachi"), 
+                 InlineKeyboardButton("❄️ About ❄️", callback_data="about")],
+               [ (InlineKeyboardButton("❄️ Commands ❄️", callback_data="help")]]
+                
     if START_PIC:
-        await message.reply_photo(START_PIC, caption=txt)       
+        await message.reply_photo(START_PIC, caption=txt , reply_markup=InlineKeyboardMarkup(btb))       
     else:
         await message.reply_text(text=txt,  disable_web_page_preview=True)
    
@@ -80,12 +82,10 @@ async def cb_handler(client, query: CallbackQuery):
             text=mr.HELP_TXT,
             reply_markup=InlineKeyboardMarkup( [[
                #⚠️ don't change source code & source link ⚠️ #
-               InlineKeyboardButton("❣️ 𝚂𝙾𝚄𝚁𝙲𝙴", url="https://github.com/TEAM-PYRO-BOTZ/PYRO-RENAME-BOT")
+               InlineKeyboardButton("🦚 Help", url="https://github.com/TEAM-PYRO-BOTZ/PYRO-RENAME-BOT")
                ],[
-               InlineKeyboardButton("❤️‍🔥 𝙷𝙾𝚆 𝚃𝙾 𝚄𝚂𝙴  ❤️‍🔥", url='https://youtu.be/BiC66uFJsio')
-               ],[
-               InlineKeyboardButton("🔒 𝙲𝙻𝙾𝚂𝙴", callback_data = "close"),
-               InlineKeyboardButton("◀️ 𝙱𝙰𝙲𝙺", callback_data = "start")
+               InlineKeyboardButton("🔚 Close ", callback_data = "close"),
+               InlineKeyboardButton("🔙 Back ", callback_data = "start")
                ]]
             )
         )
