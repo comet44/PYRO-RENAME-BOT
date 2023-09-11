@@ -37,8 +37,9 @@ async def start(client, message):
     user = message.from_user
     if not await db.is_user_exist(user.id):
         await db.add_user(user.id)             
-    txt=f"👋 Hi {user.mention} \n 🪭 I am a simple File Renamer and File to Video Converter Bot \n 💫 With Custom Caption And Thumnail Support "
-
+    txt=f"👋 Hi {user.mention} \n 🪭 I am a simple File Renamer and File to Video Converter Bot \n 💫 With Custom Caption And Thumnail Support ",
+    buttons = [[ InlineKeyboardButton("❄️ Owner ❄️", callback_data="t.me/python_itachi"), 
+                 InlineKeyboardButton("❄️ About ❄️", callback_data="about")]
     if START_PIC:
         await message.reply_photo(START_PIC, caption=txt)       
     else:
@@ -93,11 +94,6 @@ async def cb_handler(client, query: CallbackQuery):
             text=mr.ABOUT_TXT.format(client.mention),
             disable_web_page_preview = True,
             reply_markup=InlineKeyboardMarkup( [[
-               #⚠️ don't change source code & source link ⚠️ #
-               InlineKeyboardButton("❣️ 𝚂𝙾𝚄𝚁𝙲𝙴", url="https://github.com/TEAM-PYRO-BOTZ/PYRO-RENAME-BOT")
-               ],[
-               InlineKeyboardButton("🖥️ 𝙷𝙾𝚆 𝚃𝙾 𝙼𝙰𝙺𝙴", url="https://youtu.be/GfulqsSnTv4")
-               ],[
                InlineKeyboardButton("🔒 𝙲𝙻𝙾𝚂𝙴", callback_data = "close"),
                InlineKeyboardButton("◀️ 𝙱𝙰𝙲𝙺", callback_data = "start")
                ]]
