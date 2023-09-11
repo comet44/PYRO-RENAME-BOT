@@ -40,7 +40,7 @@ import os, sys, time, asyncio, logging, datetime
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
  
-@Client.on_message(filters.command(["stats", "status"]) & filters.user(config.ADMIN))
+@Client.on_message(filters.command(["stats", "status"]) & filters.user(ADMIN))
 async def get_stats(bot, message):
     total_users = await db.total_users_count()
     uptime = time.strftime("%Hh%Mm%Ss", time.gmtime(time.time() - bot.uptime))    
@@ -52,7 +52,7 @@ async def get_stats(bot, message):
 
 
 #Restart to cancell all process 
-@Client.on_message(filters.private & filters.command("restart") & filters.user(config.ADMIN))
+@Client.on_message(filters.private & filters.command("restart") & filters.user(ADMIN))
 async def restart_bot(b, m):
     await m.reply_text("🔄__Rᴇꜱᴛᴀʀᴛɪɴɢ.....__")
     os.execl(sys.executable, sys.executable, *sys.argv)
