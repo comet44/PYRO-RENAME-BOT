@@ -37,7 +37,7 @@ async def start(client, message):
     user = message.from_user
     if not await db.is_user_exist(user.id):
         await db.add_user(user.id)             
-    txt=f"👋 Hi {user.mention} \n 🪭 I am a simple File Renamer and File to Video Converter Bot \n 💫 With Custom Caption And Thumnail Support ",
+    txt=f''' <a href="https://telegra.ph/file/34fef850b5f6aeb4fc658.jpg">👋 Hi  </a> \n 🪭  I am a simple File Renamer and File to Video Converter Bot \n 💫 With Custom Caption And Thumnail Sup0port ''',
     btb = InlineKeyboardMarkup([
           [      InlineKeyboardButton("❄️ Owner ❄️", callback_data="t.me/python_itachi"), 
                  InlineKeyboardButton("❄️ About ❄️", callback_data="about")
@@ -51,7 +51,7 @@ async def start(client, message):
     if START_PIC:
         await message.reply_photo(photo=START_PIC, caption= txt.format(user.mention), reply_markup=btb)       
     else:
-        await message.reply_text(text=txt.format(user.mention), reply_markup=button, disable_web_page_preview=True)
+        await message.reply_text(text=txt , reply_markup=btb, disable_web_page_preview=True)
    
 
 @Client.on_message(filters.private & (filters.document | filters.audio | filters.video))
