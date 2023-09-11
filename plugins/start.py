@@ -38,7 +38,7 @@ async def start(client, message):
     if not await db.is_user_exist(user.id):
         await db.add_user(user.id)             
     txt=f"👋 Hi {user.mention} \n 🪭 I am a simple File Renamer and File to Video Converter Bot \n 💫 With Custom Caption And Thumnail Support ",
-    btb = [
+    btb = InlineKeyboardMarkup([
           [      InlineKeyboardButton("❄️ Owner ❄️", callback_data="t.me/python_itachi"), 
                  InlineKeyboardButton("❄️ About ❄️", callback_data="about")
           ],
@@ -46,12 +46,12 @@ async def start(client, message):
                  InlineKeyboardButton("❄️ Commands ❄️", callback_data="help")
              
           ]
-          ],
+          ],)
                 
     if START_PIC:
-        await message.reply_photo(photo = START_PIC, caption=txt , reply_markup=InlineKeyboardMarkup(btb))       
+        await message.reply_photo(config.START_PIC, caption= txt.format(user.mention), reply_markup=btb)       
     else:
-        await message.reply_text(text=txt,  disable_web_page_preview=True)
+        await message.reply_text(text=txt.format(user.mention), reply_markup=button, disable_web_page_preview=True)
    
 
 @Client.on_message(filters.private & (filters.document | filters.audio | filters.video))
