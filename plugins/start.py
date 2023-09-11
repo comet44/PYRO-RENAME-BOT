@@ -37,7 +37,9 @@ async def start(client, message):
     user = message.from_user
     if not await db.is_user_exist(user.id):
         await db.add_user(user.id)             
-    txt=f''' <a href="https://telegra.ph/file/34fef850b5f6aeb4fc658.jpg">👋 Hi  </a> \n 🪭  I am a simple File Renamer and File to Video Converter Bot \n 💫 With Custom Caption And Thumnail Sup0port ''',
+    txt=f''' <a href="https://telegra.ph/file/34fef850b5f6aeb4fc658.jpg"> 👋 Hi </a>  
+🔮 I am a simple File Renamer and File to Video Converter Bot  
+💫 With Custom Caption And Thumnail Support ''',
     btb = InlineKeyboardMarkup([
           [      InlineKeyboardButton("❄️ Owner ❄️", callback_data="t.me/python_itachi"), 
                  InlineKeyboardButton("❄️ About ❄️", callback_data="about")
@@ -51,7 +53,7 @@ async def start(client, message):
     if START_PIC:
         await message.reply_photo(photo=START_PIC, caption= txt.format(user.mention), reply_markup=btb)       
     else:
-        await message.reply_text(text=txt , reply_markup=btb, disable_web_page_preview=True)
+        await message.reply_text(text=txt , reply_markup=btb, disable_web_page_preview=False)
    
 
 @Client.on_message(filters.private & (filters.document | filters.audio | filters.video))
@@ -88,7 +90,7 @@ async def cb_handler(client, query: CallbackQuery):
             text=mr.HELP_TXT,
             reply_markup=InlineKeyboardMarkup( [[
                #⚠️ don't change source code & source link ⚠️ #
-               InlineKeyboardButton("🦚 Help", url="https://github.com/TEAM-PYRO-BOTZ/PYRO-RENAME-BOT")
+               InlineKeyboardButton("🦚About ", url="about")
                ],[
                InlineKeyboardButton("🔚 Close ", callback_data = "close"),
                InlineKeyboardButton("🔙 Back ", callback_data = "start")
