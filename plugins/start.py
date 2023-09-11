@@ -49,7 +49,7 @@ async def start(client, message):
           ],)
                 
     if START_PIC:
-        await message.reply_photo(config.START_PIC, caption= txt.format(user.mention), reply_markup=btb)       
+        await message.reply_photo(photo=START_PIC, caption= txt.format(user.mention), reply_markup=btb)       
     else:
         await message.reply_text(text=txt.format(user.mention), reply_markup=button, disable_web_page_preview=True)
    
