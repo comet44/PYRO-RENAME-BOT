@@ -49,7 +49,7 @@ async def start(client, message):
           ],
                 
     if START_PIC:
-        await message.reply_photo(START_PIC, caption=txt , reply_markup=InlineKeyboardMarkup(btb))       
+        await message.reply_photo(photo = START_PIC, caption=txt , reply_markup=InlineKeyboardMarkup(btb))       
     else:
         await message.reply_text(text=txt,  disable_web_page_preview=True)
    
